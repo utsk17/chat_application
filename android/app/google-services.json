@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "777402213858",
+    "firebase_url": "https://backendmobileproject-default-rtdb.firebaseio.com",
+    "project_id": "backendmobileproject",
+    "storage_bucket": "backendmobileproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777402213858:android:90ce16f0c7e4c599f485bb",
+        "android_client_info": {
+          "package_name": "com.example.endgame_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEZ50t17PvmI0vL7buPqYGO48Qa1fW-84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

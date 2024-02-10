@@ -50,21 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBEZ50t17PvmI0vL7buPqYGO48Qa1fW-84',
-    appId: '1:777402213858:android:90ce16f0c7e4c599f485bb',
-    messagingSenderId: '777402213858',
-    projectId: 'backendmobileproject',
-    databaseURL: 'https://backendmobileproject-default-rtdb.firebaseio.com',
-    storageBucket: 'backendmobileproject.appspot.com',
+    apiKey: 'AIzaSyCuQc-J49PpWi5labOWsV2uJxZHjlw0eVs',
+    appId: '1:159060134437:android:387c7cc79a1bc51a918dcc',
+    messagingSenderId: '159060134437',
+    projectId: 'flutter-chatapp-e0b85',
+    storageBucket: 'flutter-chatapp-e0b85.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCsBqQQpwxCZorwZKM-Ud38jXCqZgB_mM0',
-    appId: '1:777402213858:ios:c44eb7b990931cecf485bb',
-    messagingSenderId: '777402213858',
-    projectId: 'backendmobileproject',
-    databaseURL: 'https://backendmobileproject-default-rtdb.firebaseio.com',
-    storageBucket: 'backendmobileproject.appspot.com',
+    apiKey: 'AIzaSyAjtdGj5airsYCFG6iZv95gfPdAumWTxKU',
+    appId: '1:159060134437:ios:51e1f44750c98a38918dcc',
+    messagingSenderId: '159060134437',
+    projectId: 'flutter-chatapp-e0b85',
+    storageBucket: 'flutter-chatapp-e0b85.appspot.com',
     iosBundleId: 'com.example.endgameApplication',
   );
 }

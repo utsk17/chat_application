@@ -1,3 +1,6 @@
+import 'package:endgame_application/screens/chat.dart';
+import 'package:endgame_application/screens/splash.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:endgame_application/screens/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,12 +20,26 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'FlutterChat',
+        title: 'Flutter Chat Application',
         theme: ThemeData().copyWith(
           // useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
               seedColor: const Color.fromARGB(255, 63, 17, 177)),
         ),
-        home: const AuthScreen());
+        home: StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            //the if method is used below to show different screens for different circumstances
+            builder: (ctx, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                //for the loading time or screen over here
+                return const SplashScreen();
+              }
+
+              if (snapshot.hasData) {
+                return const ChatScreen(); //this is for logged in user
+              }
+
+              return const AuthScreen(); //if not logged in
+            }));
   }
 }

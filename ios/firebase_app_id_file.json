@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:777402213858:ios:c44eb7b990931cecf485bb",
-  "FIREBASE_PROJECT_ID": "backendmobileproject",
-  "GCM_SENDER_ID": "777402213858"
+  "GOOGLE_APP_ID": "1:159060134437:ios:51e1f44750c98a38918dcc",
+  "FIREBASE_PROJECT_ID": "flutter-chatapp-e0b85",
+  "GCM_SENDER_ID": "159060134437"
 }

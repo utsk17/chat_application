@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "777402213858",
-    "firebase_url": "https://backendmobileproject-default-rtdb.firebaseio.com",
-    "project_id": "backendmobileproject",
-    "storage_bucket": "backendmobileproject.appspot.com"
+    "project_number": "159060134437",
+    "project_id": "flutter-chatapp-e0b85",
+    "storage_bucket": "flutter-chatapp-e0b85.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:777402213858:android:90ce16f0c7e4c599f485bb",
+        "mobilesdk_app_id": "1:159060134437:android:387c7cc79a1bc51a918dcc",
         "android_client_info": {
           "package_name": "com.example.endgame_application"
         }
@@ -16,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBEZ50t17PvmI0vL7buPqYGO48Qa1fW-84"
+          "current_key": "AIzaSyCuQc-J49PpWi5labOWsV2uJxZHjlw0eVs"
         }
       ],
       "services": {

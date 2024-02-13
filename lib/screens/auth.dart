@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:endgame_application/widgets/user_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,10 @@ class _AuthScreenState extends State<AuthScreen> {
   var _isLogin = true;
   var _enteredEmail = '';
   var _enteredPassword = '';
-
+  // var _isAuthenticating = false;
+  //     false; //defined for a loading spinner when image being uploaded
   File? _selectedImage;
+  var _enteredUsername = '';
 
   void _submit() async {
     final isValid = _form.currentState!.validate();
@@ -38,6 +41,9 @@ class _AuthScreenState extends State<AuthScreen> {
     _form.currentState!.save();
 
     try {
+      // setState(() {
+      //   _isAuthenticating = true;
+      // });
       if (_isLogin) {
         // we have to log users in
         final userCredentials = await _firebase.signInWithEmailAndPassword(
@@ -54,7 +60,15 @@ class _AuthScreenState extends State<AuthScreen> {
 
         await storageRef.putFile(_selectedImage!); //to upload file to the path
         final imageUrl = await storageRef.getDownloadURL();
-        print(imageUrl);
+
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredentials.user!.uid)
+            .set({
+          'username': _enteredUsername,
+          'email': _enteredEmail,
+          'image_url': imageUrl,
+        }); //to tell firebase which data should be stored in the document
       }
     } on FirebaseAuthException catch (error) {
       if (error.code == 'email-already-in-use') {
@@ -66,6 +80,9 @@ class _AuthScreenState extends State<AuthScreen> {
           content: Text(error.message ?? 'Authentication failed.'),
         ),
       );
+      // setState(() {
+      //   _isAuthenticating = false;
+      // });
     }
   }
 
@@ -121,6 +138,25 @@ class _AuthScreenState extends State<AuthScreen> {
                               _enteredEmail = value!;
                             },
                           ),
+                          if (!_isLogin) //to ensure the below logic is applicable inly in sign up mode (for new users)
+                            //below textformfield is meant to be used for storing username
+                            TextFormField(
+                              decoration:
+                                  const InputDecoration(labelText: 'Username'),
+                              enableSuggestions: false,
+                              validator: (value) {
+                                if (value == null ||
+                                    value.isEmpty ||
+                                    value.trim().length < 4) {
+                                  return 'Enter a valid username';
+                                }
+                                return null; //otherwise return null because we have no validation error
+                              },
+                              onSaved: (value) {
+                                _enteredUsername =
+                                    value!; //this will automatically store and update username entered by the user
+                              },
+                            ),
                           TextFormField(
                             decoration:
                                 const InputDecoration(labelText: 'Password'),
@@ -136,6 +172,9 @@ class _AuthScreenState extends State<AuthScreen> {
                             },
                           ),
                           const SizedBox(height: 12),
+                          // if (_isAuthenticating = true)
+                          //   const CircularProgressIndicator(),
+                          // if (!_isAuthenticating)
                           ElevatedButton(
                             onPressed: _submit,
                             style: ElevatedButton.styleFrom(
@@ -145,6 +184,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             ),
                             child: Text(_isLogin ? 'Login' : 'Signup'),
                           ),
+                          // if (!_isAuthenticating)
                           TextButton(
                             onPressed: () {
                               setState(() {
